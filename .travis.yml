@@ -6,7 +6,7 @@ before_install:
     - docker build -t theozpal/multi-react-test -f ./client/Dockerfile.dev .
 
 script:
-    - docker run -e CI=true USERNAME/multi-react-test npm test
+    - docker run -e CI=true theozpal/multi-react-test npm test
 
 after_success:
     - docker build -t theozpal/multicontainer-client  ./client
