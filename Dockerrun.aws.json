@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "theozpal/multicontainer-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "theozpal/multicontainer-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "theozpal/multicontainer-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "theozpal/multicontainer-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
